@@ -80,4 +80,15 @@ return [
         'validate_csrf_token' => Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
     ],
 
+    /*
+    |-----------------------------------------------------------------------
+    | Token expiration
+    |----------------------------------------------------------------------
+    |
+    | Set to one day 60 * 24 = 1 day
+    | When expired user is forced to logout and re authenticate again
+    */
+
+    'expiration' => 1440,
+
 ];
