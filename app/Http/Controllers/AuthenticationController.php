@@ -24,6 +24,7 @@ class AuthenticationController extends Controller
 
             if (!$user || !Hash::check($req->password, $user->password)) {
                 return Response::fail([
+                    'action' => 'Authentication Failure',
                     'message' => "The provided credentials are incorrect",
                 ]);
             }
@@ -40,6 +41,7 @@ class AuthenticationController extends Controller
 
         }catch(ValidationException $e){
             return Response::fail([
+                'action' => 'Authentication Failure',
                 'message' => "Validation failed",
                 'error' => $e->errors()
             ]);
