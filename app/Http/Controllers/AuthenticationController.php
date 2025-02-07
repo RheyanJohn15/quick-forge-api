@@ -18,7 +18,6 @@ class AuthenticationController extends Controller
             $req->validate([
                 'email' => 'required|email',
                 'password' => 'required|string',
-                'device_name' => 'required|string'
             ]);
 
             $user = User::where('email', $req->email)->first();
@@ -29,7 +28,7 @@ class AuthenticationController extends Controller
                 ]);
             }
 
-            $token = $user->createToken($req->device_name)->plainTextToken;
+            $token = $user->createToken('api_token')->plainTextToken;
 
             return Response::success([
                 'action' => 'Authentication Successful',
