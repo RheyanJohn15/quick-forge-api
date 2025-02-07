@@ -23,8 +23,8 @@ class AuthenticationController extends Controller
             $user = User::where('email', $req->email)->first();
 
             if (!$user || !Hash::check($req->password, $user->password)) {
-                throw ValidationException::withMessages([
-                    'email' => ['The provided credentials are incorrect.'],
+                return Response::fail([
+                    'message' => "The provided credentials are incorrect",
                 ]);
             }
 
@@ -33,13 +33,13 @@ class AuthenticationController extends Controller
             return Response::success([
                 'action' => 'Authentication Successful',
                 'message'=> 'You are successfully authenticated',
-                'data' => [
+                'result' => [
                     'api_token' => $token
                 ]
             ]);
 
         }catch(ValidationException $e){
-            Response::fail([
+            return Response::fail([
                 'message' => "Validation failed",
                 'error' => $e->errors()
             ]);

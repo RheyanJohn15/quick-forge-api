@@ -37,7 +37,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Response::macro('fail', function (array $data){
-
             $message = $data['message'] ?? "Api Request has failed";
             $action = $data['action'] ?? "Api Request";
             $code = $data['code'] ?? 500;
