@@ -47,4 +47,5 @@ class AuthenticationController extends Controller
             ]);
         }
     }
+
 }
