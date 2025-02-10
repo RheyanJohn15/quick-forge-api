@@ -20,6 +20,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/add', 'add');
         Route::get('/info/{id}', 'info');
         Route::put('/update', 'update');
+        Route::get('/workspaces', 'workspaces');
     });
 
 });

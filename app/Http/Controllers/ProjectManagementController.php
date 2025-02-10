@@ -100,4 +100,13 @@ class ProjectManagementController extends Controller
             'data'=> $project
         ]);
     }
+
+    public function workspaces(){
+        $workspace = Workspaces::where('isDeleted', false)->get();
+
+        return Response::success([
+            'action'=> 'Fetch workspaces',
+            'result' => $workspace
+        ]);
+    }
 }
