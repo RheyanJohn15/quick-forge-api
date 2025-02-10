@@ -8,6 +8,8 @@ use Carbon\Carbon;
 
 class Project extends Model
 {
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $table = 'projects';
     protected $primaryKey = 'proj_id';
 

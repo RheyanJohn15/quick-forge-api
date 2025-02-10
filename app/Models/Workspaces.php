@@ -8,6 +8,8 @@ use Carbon\Carbon;
 
 class Workspaces extends Model
 {
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $table = 'workspaces';
     protected $primaryKey = 'ws_id';
 
