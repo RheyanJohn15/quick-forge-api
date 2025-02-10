@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Workspaces;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\ValidationException;
 
@@ -27,9 +28,12 @@ class ProjectManagementController extends Controller
                 ]);
             }
 
+            $workspace = Workspaces::where('isDefault', true)->first();
+
             $project = new Project();
             $project->project_name = $req->name;
             $project->project_description = $req->description;
+            $project->ws_id = $workspace->ws_id;
             $project->save();
 
             return Response::success([

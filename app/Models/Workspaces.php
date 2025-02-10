@@ -6,16 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
 
-class Project extends Model
+class Workspaces extends Model
 {
-    protected $table = 'projects';
-    protected $primaryKey = 'proj_id';
+    protected $table = 'workspaces';
+    protected $primaryKey = 'ws_id';
 
     protected $fillable = [
-        'project_name',
-        'project_description',
-        'project_logo',
-        'ws_id'
+        'ws_name',
+        'isDefault',
+        'isDeleted'
     ];
 
     protected function createdAt(): Attribute
@@ -37,8 +36,8 @@ class Project extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            if (empty($model->proj_id)) {
-                $model->proj_id = (string) \Illuminate\Support\Str::uuid();
+            if (empty($model->ws_id)) {
+                $model->ws_id = (string) \Illuminate\Support\Str::uuid();
             }
         });
     }
