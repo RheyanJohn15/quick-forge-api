@@ -37,7 +37,7 @@ class Project extends Model
 
         static::creating(function ($model) {
             if (empty($model->proj_id)) {
-                $model->proj_id = (string) 'proj_' . \Illuminate\Support\Str::uuid();
+                $model->proj_id = (string) \Illuminate\Support\Str::uuid();
             }
         });
     }

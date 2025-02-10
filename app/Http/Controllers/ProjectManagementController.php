@@ -52,7 +52,7 @@ class ProjectManagementController extends Controller
 
         return Response::success([
             'action' => 'Project List',
-            'data'=> $projects
+            'result'=> $projects
         ]);
     }
 
